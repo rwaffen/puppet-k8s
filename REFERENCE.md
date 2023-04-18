@@ -1844,14 +1844,14 @@ The following parameters are available in the `k8s::server::etcd` class:
 * [`firewall_type`](#-k8s--server--etcd--firewall_type)
 * [`generate_ca`](#-k8s--server--etcd--generate_ca)
 * [`manage_certs`](#-k8s--server--etcd--manage_certs)
+* [`manage_firewall`](#-k8s--server--etcd--manage_firewall)
+* [`manage_members`](#-k8s--server--etcd--manage_members)
 * [`manage_setup`](#-k8s--server--etcd--manage_setup)
 * [`peer_ca_cert`](#-k8s--server--etcd--peer_ca_cert)
 * [`peer_ca_key`](#-k8s--server--etcd--peer_ca_key)
 * [`puppetdb_discovery_tag`](#-k8s--server--etcd--puppetdb_discovery_tag)
 * [`self_signed_tls`](#-k8s--server--etcd--self_signed_tls)
 * [`version`](#-k8s--server--etcd--version)
-* [`manage_firewall`](#-k8s--server--etcd--manage_firewall)
-* [`manage_members`](#-k8s--server--etcd--manage_members)
 
 ##### <a name="-k8s--server--etcd--addn_names"></a>`addn_names`
 
@@ -1891,7 +1891,7 @@ Data type: `String[1]`
 
 name of the etcd cluster for searching its nodes in the puppetdb
 
-Default value: `$k8s::etcd_cluster_name`
+Default value: `pick($k8s::server::etcd_cluster_name, 'default')`
 
 ##### <a name="-k8s--server--etcd--ensure"></a>`ensure`
 
@@ -1924,6 +1924,22 @@ Data type: `Boolean`
 whether to manage certs or not
 
 Default value: `true`
+
+##### <a name="-k8s--server--etcd--manage_firewall"></a>`manage_firewall`
+
+Data type: `Boolean`
+
+whether to manage firewall or not
+
+Default value: `false`
+
+##### <a name="-k8s--server--etcd--manage_members"></a>`manage_members`
+
+Data type: `Boolean`
+
+whether to manage the ectd cluster member joining or not
+
+Default value: `false`
 
 ##### <a name="-k8s--server--etcd--manage_setup"></a>`manage_setup`
 
@@ -1972,22 +1988,6 @@ Data type: `String[1]`
 version of ectd to install
 
 Default value: `pick($k8s::etcd_version, '3.5.1')`
-
-##### <a name="-k8s--server--etcd--manage_firewall"></a>`manage_firewall`
-
-Data type: `Boolean`
-
-
-
-Default value: `false`
-
-##### <a name="-k8s--server--etcd--manage_members"></a>`manage_members`
-
-Data type: `Boolean`
-
-
-
-Default value: `false`
 
 ### <a name="k8s--server--etcd--setup"></a>`k8s::server::etcd::setup`
 
