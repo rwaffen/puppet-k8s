@@ -1,22 +1,57 @@
 # @summary Sets up a Kubernetes instance - either as a node or as a server
 #
-# @param manage_kernel_modules
-#   A flag to manage required Kernel modules.
 #
-# @param manage_sysctl_settings
-#   A flag to manage required sysctl settings.
 #
 # @param manage_kube_proxy
 #   How/if the kube-proxy component should be managed, either as an in-cluster
 #   component (default), or as an on-node component for advanced use-cases.
-# @param ensure
-# @param packaging
+
 #
-# @param user username for kubernetes files and services
-# @param group groupname for kubernetes files and services
-# @param uid user id for kubernetes files and services
-# @param gid group id for kubernetes files and services
+# @param api_service_address
+# @param cluster_cidr
+# @param cluster_domain
+# @param container_image
+# @param container_image_tag
+# @param container_manager
+# @param container_registry
+# @param container_runtime_service
+# @param containerd_package the containerd package anme
+# @param crictl_package the package name of crictl
+# @param crio_package cri-o the package name
+# @param dns_service_address cluster dns service address
+# @param ensure set ensure for installation or deinstallation
 # @param etcd_cluster_name name of the etcd cluster for searching its nodes in the puppetdb
+# @param etcd_version
+# @param firewall_type define the type of firewall to use
+# @param gid group id for kubernetes files and services
+# @param group groupname for kubernetes files and services
+# @param hyperkube_name
+# @param incluster_master
+# @param manage_container_manager
+# @param manage_etcd whether to manage etcd or not
+# @param manage_firewall whether to manage firewall or not
+# @param manage_image
+# @param manage_kernel_modules A flag to manage required Kernel modules.
+# @param manage_packages
+# @param manage_repo
+# @param manage_sysctl_settings A flag to manage required sysctl settings.
+# @param master cluster API connection
+# @param native_packaging installation method
+# @param native_url_template template url where to download the k8s binaries
+# @param node_auth type of node authentication
+# @param package_template
+# @param packaging
+# @param puppetdb_discovery
+# @param puppetdb_discovery_tag enable puppetdb resource searching
+# @param purge_manifests
+# @param role
+# @param runc_version the runc version
+# @param service_cluster_cidr
+# @param sysconfig_path
+# @param tarball_url_template
+# @param uid user id for kubernetes files and services
+# @param user username for kubernetes files and services
+# @param version the k8s version
 #
 class k8s (
   K8s::Ensure $ensure                     = 'present',

@@ -1,13 +1,20 @@
 # @summary Deploys a Kubernetes binary
+#
+# @param ensure set ensure for installation or deinstallation
+# @param version the k8s binary version
+# @param packaging which packaging method should be used
+# @param target
+# @param tarball_target
+# @param active
+# @param component
+#
 define k8s::binary (
-  K8s::Ensure $ensure       = $k8s::ensure,
-  String[1] $version        = $k8s::version,
-  String[1] $packaging      = $k8s::packaging,
-  String[1] $target         = "/opt/k8s/${$version}",
-  String[1] $tarball_target = '/opt/k8s/archives',
-
-  Boolean $active = true,
-
+  K8s::Ensure $ensure         = $k8s::ensure,
+  String[1] $version          = $k8s::version,
+  String[1] $packaging        = $k8s::packaging,
+  String[1] $target           = "/opt/k8s/${$version}",
+  String[1] $tarball_target   = '/opt/k8s/archives',
+  Boolean $active             = true,
   Optional[String] $component = undef,
 ) {
   if $name in ['kubelet', 'kube-proxy'] {
