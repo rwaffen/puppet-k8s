@@ -48,7 +48,7 @@ class k8s::node::kubelet (
   Optional[Stdlib::Unixpath] $key     = $k8s::node::node_key,
 
   # For token and bootstrap auth
-  Optional[Sensitive[K8s::Bootstrap_token]] $token = $k8s::node::node_token,
+  Optional[Sensitive[String[1]]] $token = $k8s::node::node_token,
 
   Optional[K8s::Firewall] $firewall_type = $k8s::node::firewall_type,
 ) {
